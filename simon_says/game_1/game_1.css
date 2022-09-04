@@ -1,0 +1,100 @@
+body{
+	background-color: aquamarine;
+}
+
+#header{
+	text-align: center;
+	font-size: 100px;
+	color: rgb(0, 95, 0);
+}
+
+#btn{
+	position: absolute;
+	width: 141px;
+	height: 93px;
+	top: 234px;
+	left: 622px;
+	background: rgb(84, 255, 45);
+	border-radius: 50%;
+}
+
+.gbtn{
+
+	width: 255px;
+	height: 227px;
+	background-color: darkgrey;
+	position: absolute;
+}
+
+#btn1{
+	left: 694px;
+	top: 332px;
+}
+
+#btn2{
+	top: 332px;
+	left: 949px;
+  }
+
+
+#btn3{
+	top: 558px;
+	left: 694px;
+}
+
+
+#btn4{
+	top: 558px;
+	left: 949px;
+}
+
+#bd{
+	text-align: center;
+	border-radius: 50%;
+	position: absolute;
+	background-color: brown;
+	border-top-style: solid;
+	border-right-style: solid;
+	width: 130px;
+	height: 130px;
+	border-top-width: 0px;
+	left: 884px;
+	top: 494px;
+	border-right-width: 0px;
+	margin-top: 1px
+  
+}
+#round{
+	text-align: center;
+	font-size: 40px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	position: absolute;
+	top: 537px;
+	left: 911px;
+}
+
+
+
+#next_lvl{
+	position: absolute;
+	top: 792px;
+	left: 1040px;
+	height: 58px;
+	width: 172px;
+	background-color: green;
+}
+
+.foot{
+	position: absolute;
+	text-align: right;
+	left: 1700px;
+	top: 900px;
+}
+
+.foot2{
+	position: absolute;
+	text-align: right;
+	top: 920px;
+	left: 1655px;
+
+}
