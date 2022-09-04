@@ -2,6 +2,8 @@ body{
 	background-color: aquamarine;
 }
 
+button {background-color: #fff;}
+
 #header{
 	text-align: center;
 	font-size: 100px;
@@ -18,12 +20,58 @@ body{
 	border-radius: 50%;
 }
 
-.gbtn{
+.button-container {
+	display: grid;
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+	background-color: darkgrey; 
+}
 
-	width: 255px;
-	height: 227px;
-	background-color: darkgrey;
-	position: absolute;
+.button-container.dodo {
+	grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;  
+}
+
+.button-container.tretre {
+    grid-template-columns: 33.3333% 33.3333% 33.3333%;
+    grid-template-rows: 33.3333% 33.3333% 33.3333%;  
+}
+
+.button-container.qaqa {
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows:  25% 25% 25% 25%;  
+}
+
+.button-container.cici {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows:  20% 20% 20% 20% 20%;  
+}
+
+
+@keyframes slowflash {
+	0%   {background-color: #fff;}
+	50%  {background-color: #f00;}
+	100% {background-color: #fff;}
+  }
+  
+  /* The element to apply the animation to */
+  .round1 {
+	animation-name: slowflash;
+	animation-duration: 2s;
+  }
+
+  .round2 {
+	animation-name: slowflash;
+	animation-duration: 1s;
+  }
+
+  .round3 {
+	animation-name: slowflash;
+	animation-duration: 0.5s;
+  }
+.btn {
+	
 }
 
 #btn1{
@@ -64,6 +112,7 @@ body{
 	margin-top: 1px
   
 }
+
 #round{
 	text-align: center;
 	font-size: 40px;

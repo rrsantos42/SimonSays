@@ -1,30 +1,54 @@
+let SIMON_SAYS = {};
+
+// The Game layouts
+SIMON_SAYS.config = [
+	{ css: "twotwo", name: "2x2", length: 4 },
+	{ css: "threethree", name: "3x3", length: 9 },
+	{ css: "fourfour", name: "4x4", length: 16 },
+	{ css: "fivefive", name: "5x5", length: 25},
+	{ css: "sixsix", name: "6x6", length: 36}
+];
+
+SIMON_SAYS.round_nbr = [];
+SIMON_SAYS.cmp_order = [];
+
+SIMON_SAYS.selectedGame = undefined;
+SIMON_SAYS.container = undefined;
+
+SIMON_SAYS.start = function(key) {
+	SIMON_SAYS.container = document.querySelector(".button-container");
 
 
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
+	SIMON_SAYS.container.addEventListener("click", function(e) {
+		if(e.target.nodeName==="BUTTON") {
+			e.target.classList.add("round1");
+		}
+	});
+
+	SIMON_SAYS.selectedGame = SIMON_SAYS.config.find((i)=> { return i.css === key });
+
+    for(var x=0;x<SIMON_SAYS.selectedGame.length;x++) {
+		var button = document.createElement("button");
+		button.setAttribute("type", "button");
+		SIMON_SAYS.container.appendChild(button);
+	}
+
+	SIMON_SAYS.container.classList.add(SIMON_SAYS.selectedGame.css);
+} 
+
+SIMON_SAYS.clear = function() {
+	SIMON_SAYS.container.innerHTML = "";
+	SIMON_SAYS.container.classList.remove(SIMON_SAYS.selectedGame.css);
 }
 
-const btn1 = document.querySelector('#btn1')
-const btn2 = document.querySelector('#btn2')
-const btn3 = document.querySelector('#btn3')
-const btn4 = document.querySelector('#btn4')
-const start = document.querySelector('#btn')
+ function sleep(ms) {
+ 	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-let order = [];
-let user_order = [];
-var arr = [btn1, btn2, btn3, btn4];
-let round = 0;
-let flash;
 
-function main()
-{	
-	order = [];
-	user_order = [];
-	round += 1;
-	flash = 0;
-	
-	
-}  
-start.addEventListener('click', (event) => {
-	main();
-})
+SIMON_SAYS.round_nbr = [];
+SIMON_SAYS.cmp_order = [];
+SIMON_SAYS.user_choice = [];
+
+
+
