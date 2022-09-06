@@ -155,3 +155,13 @@ button {background-color: #fff;}
 	left: 1655px;
 
 }
+#wait{
+	margin: auto;
+	margin-top: auto;
+	font-size: 30px;
+}
+#turn{
+	margin-top: auto;
+	margin: auto;
+	font-size: 30px;
+}

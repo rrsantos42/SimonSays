@@ -11,7 +11,9 @@
 	</head>
 	<body>
 		<h1 id="header">Simon Says</h1>
-		<button id="btn">START</button>
+		<p id="wait">WAIT FOR THE COMPUTER</p>
+		<p id="turn">Your turn</p>
+		<button id="btn" onclick="SIMON_SAYS.main()">START</button>
 		<Label id="Timer"></Label>
 		<div class="button-container">
 		</div>
@@ -20,9 +22,7 @@
 			<label id="round"></label>
 		</div>
 		
-		<a href="game_2/game_2.html">
-			<button id="next_lvl">NEXT LEVEL</button>
-		</a>
+			<button id="next_lvl" onclick="SIMON_SAYS.check()">CHECK</button>
 		<div class="foot">42Lisboa</div>
 		<div class="foot2">Made By: rsantos</div>
 		<script src="game_1.js" async defer></script>

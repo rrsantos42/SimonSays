@@ -62,6 +62,7 @@ SIMON_SAYS.clicked_btn = async function(){
 		await SIMON_SAYS.sleep(1000);
 		x++;
 	}
+	SIMON_SAYS.user_choice = [];
 }
 
 SIMON_SAYS.round_nbr = 0;
@@ -70,9 +71,6 @@ SIMON_SAYS.user_choice = [];
 
 SIMON_SAYS.round_nbr_add = function(){
 	SIMON_SAYS.round_nbr += 1;
-}
-
-SIMON_SAYS.c_grid = function(){
 }
 
 SIMON_SAYS.make_order = function(lvl, round_nbr){
@@ -194,4 +192,32 @@ SIMON_SAYS.make_order = function(lvl, round_nbr){
 		}
 	}
 	return(SIMON_SAYS.cmp_order);
+}
+
+SIMON_SAYS.check = function(){
+	var size = SIMON_SAYS.cmp_order.length;
+	var x = 0;
+	while((SIMON_SAYS.cmp_order[x] == SIMON_SAYS.user_choice[x]) && x < size)
+	{
+		x++;
+	}
+	if(x == size){
+		console.log("YOU WIN");
+	}
+	else{
+		console.log("YOU LOOSE");
+	}
+}
+SIMON_SAYS.wait  = document.getElementById("wait");
+SIMON_SAYS.turn  = document.getElementById("turn");
+
+SIMON_SAYS.main = async function(){
+	SIMON_SAYS.make_grid('twotwo');
+	SIMON_SAYS.make_order(0, 0);
+	SIMON_SAYS.wait.style.display = 'block';
+	SIMON_SAYS.turn.style.display = 'none';
+	SIMON_SAYS.clicked_btn();
+	await SIMON_SAYS.sleep(3000);
+	SIMON_SAYS.wait.style.display = 'none';
+	SIMON_SAYS.turn.style.display = 'block';
 }
