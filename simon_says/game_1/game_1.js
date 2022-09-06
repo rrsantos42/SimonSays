@@ -24,9 +24,8 @@ SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container.addEventListener("click", async function(e) {
 		if(e.target.nodeName==="BUTTON") {
 			e.target.classList.add("round1");
-			setTimeout(() => {
-				e.target.classList.remove("round1");
-			  }, "1000")
+			await SIMON_SAYS.sleep(400);
+			e.target.classList.remove("round1");
 			 SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
 		}
 	});
@@ -47,24 +46,23 @@ SIMON_SAYS.clear = function() {
 	SIMON_SAYS.container.innerHTML = "";
 	SIMON_SAYS.container.classList.remove(SIMON_SAYS.selectedGame.css);
 }
+SIMON_SAYS.sleep = function(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-SIMON_SAYS.clicked_btn = function(){
+SIMON_SAYS.clicked_btn = async function(){
 
-	var x = 0;
-	while(x < 2)
+	var x = '0';
+	var tmp = '';
+	var size = SIMON_SAYS.cmp_order.length;
+	while(x < size) 
 	{
-		setTimeout(() => {
-			document.getElementById(x).click();
-			x++;
-		 }, "300")
-		 x++;
+		tmp = SIMON_SAYS.cmp_order[x];
+		document.getElementById(tmp).click();
+		await SIMON_SAYS.sleep(1000);
+		x++;
 	}
 }
-
-SIMON_SAYS.sleep = async function(ms) {
- 	return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 
 SIMON_SAYS.round_nbr = 0;
 SIMON_SAYS.cmp_order = undefined;
