@@ -51,7 +51,7 @@ SIMON_SAYS.sleep = function(ms) {
 }
 
 SIMON_SAYS.clicked_btn = async function(){
-
+	SIMON_SAYS.wait.style.display = 'block'
 	var x = '0';
 	var tmp = '';
 	var size = SIMON_SAYS.cmp_order.length;
@@ -63,6 +63,8 @@ SIMON_SAYS.clicked_btn = async function(){
 		x++;
 	}
 	SIMON_SAYS.user_choice = [];
+	SIMON_SAYS.wait.style.display = 'none';
+	SIMON_SAYS.turn.style.display = 'block';
 }
 
 SIMON_SAYS.round_nbr = 0;
@@ -197,8 +199,7 @@ SIMON_SAYS.make_order = function(lvl, round_nbr){
 SIMON_SAYS.check = function(){
 	var size = SIMON_SAYS.cmp_order.length;
 	var x = 0;
-	while((SIMON_SAYS.cmp_order[x] == SIMON_SAYS.user_choice[x]) && x < size)
-	{
+	while((SIMON_SAYS.cmp_order[x] == SIMON_SAYS.user_choice[x]) && x < size){
 		x++;
 	}
 	if(x == size){
@@ -207,17 +208,17 @@ SIMON_SAYS.check = function(){
 	else{
 		console.log("YOU LOOSE");
 	}
+	SIMON_SAYS.clear();
+	SIMON_SAYS.user_choice = [];
 }
 SIMON_SAYS.wait  = document.getElementById("wait");
 SIMON_SAYS.turn  = document.getElementById("turn");
+SIMON_SAYS.turn.style.display = 'none';
+SIMON_SAYS.wait.style.display = 'none'
 
-SIMON_SAYS.main = async function(){
+
+SIMON_SAYS.main = function(){
 	SIMON_SAYS.make_grid('twotwo');
 	SIMON_SAYS.make_order(0, 0);
-	SIMON_SAYS.wait.style.display = 'block';
-	SIMON_SAYS.turn.style.display = 'none';
 	SIMON_SAYS.clicked_btn();
-	await SIMON_SAYS.sleep(3000);
-	SIMON_SAYS.wait.style.display = 'none';
-	SIMON_SAYS.turn.style.display = 'block';
 }
