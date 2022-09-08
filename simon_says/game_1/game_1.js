@@ -16,6 +16,11 @@ SIMON_SAYS.cmp_order = [];
 SIMON_SAYS.user_choice = [];
 SIMON_SAYS.selectedGame = undefined;
 SIMON_SAYS.container = undefined;
+SIMON_SAYS.win = document.getElementById("win");
+SIMON_SAYS.lose = document.getElementById("lose");
+
+SIMON_SAYS.win.style.display = 'none';
+SIMON_SAYS.lose.style.display = 'none';
 
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
@@ -40,6 +45,8 @@ SIMON_SAYS.make_grid = function(key) {
 	}
 
 	SIMON_SAYS.container.classList.add(SIMON_SAYS.selectedGame.css);
+	SIMON_SAYS.win.style.display = 'none';
+	SIMON_SAYS.lose.style.display = 'none';
 } 
 
 SIMON_SAYS.clear = function() {
@@ -204,12 +211,16 @@ SIMON_SAYS.check = function(){
 	}
 	if(x == size){
 		console.log("YOU WIN");
+		SIMON_SAYS.win.style.display = 'block';
 	}
 	else{
 		console.log("YOU LOOSE");
+		SIMON_SAYS.lose.style.display = 'block';
+
 	}
 	SIMON_SAYS.clear();
 	SIMON_SAYS.user_choice = [];
+	SIMON_SAYS.turn.style.display = 'none';
 }
 SIMON_SAYS.wait  = document.getElementById("wait");
 SIMON_SAYS.turn  = document.getElementById("turn");
