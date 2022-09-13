@@ -6,14 +6,17 @@ button {background-color: #fff;}
 
 #header{
 	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	font-size: 100px;
 	color: rgb(0, 95, 0);
 }
 
 #btn{
-	position: absolute;
-	width: 141px;
-	height: 93px;
+	
+	margin-left: 395px;
+	width: 152px;
+	height: 124px;
 	top: 234px;
 	left: 622px;
 	background: rgb(84, 255, 45);
@@ -25,7 +28,7 @@ button {background-color: #fff;}
 	width: 600px;
 	height: 600px;
 	margin: 0 auto;
-	background-color: darkgrey; 
+	background-color: aquamarine; 
 }
 
 .button-container.twotwo {
@@ -133,27 +136,22 @@ button {background-color: #fff;}
 
 
 #next_lvl{
-	position: absolute;
-	top: 792px;
+	margin-left: 1214px;
+	margin-bottom: 20px;
 	left: 1040px;
 	height: 58px;
 	width: 172px;
-	background-color: green;
+	background-color: rgb(225, 3, 3);
 }
 
 .foot{
-	position: absolute;
+	margin: auto;
 	text-align: right;
-	left: 1700px;
-	top: 900px;
 }
 
 .foot2{
-	position: absolute;
+	margin: auto;
 	text-align: right;
-	top: 920px;
-	left: 1655px;
-
 }
 #wait{
 	margin: auto;
@@ -164,4 +162,7 @@ button {background-color: #fff;}
 	margin-top: auto;
 	margin: auto;
 	font-size: 30px;
+}
+#win{
+
 }

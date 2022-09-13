@@ -10,28 +10,26 @@ SIMON_SAYS.config = [
 	{ css: "sevenseven", name: "7x7", length:49}
 ];
 
-SIMON_SAYS.round_nbr = [];
 SIMON_SAYS.round_nbr = 0;
+SIMON_SAYS.level_nbr = 0;
 SIMON_SAYS.cmp_order = [];
 SIMON_SAYS.user_choice = [];
 SIMON_SAYS.selectedGame = undefined;
 SIMON_SAYS.container = undefined;
 SIMON_SAYS.win = document.getElementById("win");
 SIMON_SAYS.lose = document.getElementById("lose");
-
 SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
+SIMON_SAYS.size_of_user = 0;
 
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
-
-
 	SIMON_SAYS.container.addEventListener("click", async function(e) {
 		if(e.target.nodeName==="BUTTON") {
 			e.target.classList.add("round1");
-			await SIMON_SAYS.sleep(400);
+			await SIMON_SAYS.sleep(500);
 			e.target.classList.remove("round1");
-			 SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
+			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
 		}
 	});
 
@@ -86,125 +84,43 @@ SIMON_SAYS.make_order = function(lvl, round_nbr){
 	SIMON_SAYS.cmp_order = [];
 	var i = 0;
 	if(lvl == 0){
-		if(round_nbr == 0){
-
-			for(times = 0; times < 2; times++){
+		for(times = 0; times < (2 * (round_nbr + 1)); times++){
 				i = Math.floor(Math.random() * 4);
 				SIMON_SAYS.cmp_order[times] = i;
 			}
-		}
-		if(round_nbr == 1){
-
-			for(times = 0; times < 4; times++){
-				i = Math.floor(Math.random() * 4);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 2){
-
-			for(times = 0; times < 6; times++){
-				i = Math.floor(Math.random() * 4);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-	}
+	 }
 	if(lvl == 1){
-		if(round_nbr == 0){
-
-			for(times = 0; times < 3; times++){
-				i = Math.floor(Math.random() * 9);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
+		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
+			i = Math.floor(Math.random() * 4);
+			SIMON_SAYS.cmp_order[times] = i;
 		}
-		if(round_nbr == 1){
-
-			for(times = 0; times < 5; times++){
-				i = Math.floor(Math.random() * 9);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 2){
-
-			for(times = 0; times < 7; times++){
-				i = Math.floor(Math.random() * 9);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
+		or(Math.random() * 9);
 	}
 	if(lvl == 2){
-		if(round_nbr == 0){
-
-			for(times = 0; times < 4; times++){
-				i = Math.floor(Math.random() * 16);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 1){
-
-			for(times = 0; times < 6; times++){
-				i = Math.floor(Math.random() * 16);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 2){
-
-			for(times = 0; times < 8; times++){
-				i = Math.floor(Math.random() * 16);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
+		for(times = 0; times < (2 * (round_nbr + lvl)); times++){
+			i = Math.floor(Math.random() * 4);
+			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
 	if(lvl == 3){
-		if(round_nbr == 0){
-
-			for(times = 0; times < 5; times++){
-				i = Math.floor(Math.random() *25);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 1){
-
-			for(times = 0; times < 7; times++){
-				i = Math.floor(Math.random() * 25);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 2){
-
-			for(times = 0; times < 9; times++){
-				i = Math.floor(Math.random() * 25);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
+		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
+			i = Math.floor(Math.random() * 4);
+			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
 	if(lvl == 4){
-		if(round_nbr == 0){
-
-			for(times = 0; times < 6; times++){
-				i = Math.floor(Math.random() * 36);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 1){
-
-			for(times = 0; times < 8; times++){
-				i = Math.floor(Math.random() * 36);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-		}
-		if(round_nbr == 2){
-
-			for(times = 0; times < 10; times++){
-				i = Math.floor(Math.random() * 36);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
+		for(times = 0; times < (2 * (round_nbr + lvl - 1)); times++){
+			i = Math.floor(Math.random() * 4);
+			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
 	return(SIMON_SAYS.cmp_order);
 }
+SIMON_SAYS.showcontainer = document.getElementById("container");
 
-SIMON_SAYS.check = function(){
+SIMON_SAYS.check = async function(){
 	var size = SIMON_SAYS.cmp_order.length;
+
 	var x = 0;
 	while((SIMON_SAYS.cmp_order[x] == SIMON_SAYS.user_choice[x]) && x < size){
 		x++;
@@ -212,24 +128,46 @@ SIMON_SAYS.check = function(){
 	if(x == size){
 		console.log("YOU WIN");
 		SIMON_SAYS.win.style.display = 'block';
+		SIMON_SAYS.turn.style.display = 'none';
+		await SIMON_SAYS.sleep(1000);
 	}
 	else{
 		console.log("YOU LOOSE");
 		SIMON_SAYS.lose.style.display = 'block';
+		await SIMON_SAYS.sleep(600);
 
 	}
-	SIMON_SAYS.clear();
+	SIMON_SAYS.round_nbr += 1;
 	SIMON_SAYS.user_choice = [];
+	SIMON_SAYS.clear();
 	SIMON_SAYS.turn.style.display = 'none';
+	SIMON_SAYS.main();
 }
+
 SIMON_SAYS.wait  = document.getElementById("wait");
 SIMON_SAYS.turn  = document.getElementById("turn");
 SIMON_SAYS.turn.style.display = 'none';
-SIMON_SAYS.wait.style.display = 'none'
+SIMON_SAYS.wait.style.display = 'none';
+SIMON_SAYS.start = document.getElementById("btn");
+SIMON_SAYS.checkbtn = document.getElementById("next_lvl")
+SIMON_SAYS.grids = [ "twotwo", "threethree", "fourfour", "fivefive", "sixsix", "sevenseven"];
 
+SIMON_SAYS.check_rounds = function(){
+
+	if(SIMON_SAYS.round_nbr == 3){
+		SIMON_SAYS.round_nbr = 0;
+		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
+		SIMON_SAYS.level_nbr ++;
+	}
+	else{
+		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
+	}
+}
 
 SIMON_SAYS.main = function(){
-	SIMON_SAYS.make_grid('twotwo');
-	SIMON_SAYS.make_order(0, 0);
+	SIMON_SAYS.start.style.display = "none";
+	SIMON_SAYS.check_rounds();
+	SIMON_SAYS.make_grid(SIMON_SAYS.grid_value);
+	SIMON_SAYS.make_order(SIMON_SAYS.level_nbr, SIMON_SAYS.round_nbr);
 	SIMON_SAYS.clicked_btn();
 }
