@@ -22,16 +22,16 @@ SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
 SIMON_SAYS.size_of_user = 0;
 
+// SIMON_SAYS.cliccaaporra = function(e) {
+// 		e.target.classList.add("round1");
+// 		// await SIMON_SAYS.sleep(500);
+// 		e.target.classList.remove("round1");
+// 		SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
+// 		console.log(e.srcElement.id);
+// }
+
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
-	SIMON_SAYS.container.addEventListener("click", async function(e) {
-		if(e.target.nodeName==="BUTTON") {
-			e.target.classList.add("round1");
-			await SIMON_SAYS.sleep(500);
-			e.target.classList.remove("round1");
-			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
-		}
-	});
 
 	SIMON_SAYS.selectedGame = SIMON_SAYS.config.find((i)=> { return i.css === key });
 
@@ -39,6 +39,15 @@ SIMON_SAYS.make_grid = function(key) {
 		var button = document.createElement("button");
 		button.setAttribute("type", "button");
 		button.setAttribute("id", x);
+		button.addEventListener("click", async function(e) {
+			e.target.classList.add("round1");
+			await SIMON_SAYS.sleep(500);
+			e.target.classList.remove("round1");
+			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
+			console.log(e.srcElement.id);
+		});
+
+		// button.setAttribute("onclick", "SIMON_SAYS.cliccaaporra();")
 		SIMON_SAYS.container.appendChild(button);
 	}
 
@@ -73,7 +82,6 @@ SIMON_SAYS.clicked_btn = async function(){
 }
 
 SIMON_SAYS.round_nbr = 0;
-SIMON_SAYS.cmp_order = undefined;
 SIMON_SAYS.user_choice = [];
 
 SIMON_SAYS.round_nbr_add = function(){
@@ -91,26 +99,25 @@ SIMON_SAYS.make_order = function(lvl, round_nbr){
 	 }
 	if(lvl == 1){
 		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
-			i = Math.floor(Math.random() * 4);
+			i = Math.floor(Math.random() * 9);
 			SIMON_SAYS.cmp_order[times] = i;
 		}
-		or(Math.random() * 9);
 	}
 	if(lvl == 2){
 		for(times = 0; times < (2 * (round_nbr + lvl)); times++){
-			i = Math.floor(Math.random() * 4);
+			i = Math.floor(Math.random() * 16);
 			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
 	if(lvl == 3){
 		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
-			i = Math.floor(Math.random() * 4);
+			i = Math.floor(Math.random() * 25);
 			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
 	if(lvl == 4){
 		for(times = 0; times < (2 * (round_nbr + lvl - 1)); times++){
-			i = Math.floor(Math.random() * 4);
+			i = Math.floor(Math.random() * 36);
 			SIMON_SAYS.cmp_order[times] = i;
 		}
 	}
@@ -130,15 +137,16 @@ SIMON_SAYS.check = async function(){
 		SIMON_SAYS.win.style.display = 'block';
 		SIMON_SAYS.turn.style.display = 'none';
 		await SIMON_SAYS.sleep(1000);
+		SIMON_SAYS.round_nbr += 1;
 	}
 	else{
 		console.log("YOU LOOSE");
 		SIMON_SAYS.lose.style.display = 'block';
 		await SIMON_SAYS.sleep(600);
-
+		
 	}
-	SIMON_SAYS.round_nbr += 1;
 	SIMON_SAYS.user_choice = [];
+	SIMON_SAYS.cmp_order = [];
 	SIMON_SAYS.clear();
 	SIMON_SAYS.turn.style.display = 'none';
 	SIMON_SAYS.main();
@@ -154,7 +162,7 @@ SIMON_SAYS.grids = [ "twotwo", "threethree", "fourfour", "fivefive", "sixsix", "
 
 SIMON_SAYS.check_rounds = function(){
 
-	if(SIMON_SAYS.round_nbr == 3){
+	if(SIMON_SAYS.round_nbr === 3){
 		SIMON_SAYS.round_nbr = 0;
 		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
 		SIMON_SAYS.level_nbr ++;
