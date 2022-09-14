@@ -22,13 +22,6 @@ SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
 SIMON_SAYS.size_of_user = 0;
 
-// SIMON_SAYS.cliccaaporra = function(e) {
-// 		e.target.classList.add("round1");
-// 		// await SIMON_SAYS.sleep(500);
-// 		e.target.classList.remove("round1");
-// 		SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
-// 		console.log(e.srcElement.id);
-// }
 
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
@@ -43,11 +36,9 @@ SIMON_SAYS.make_grid = function(key) {
 			e.target.classList.add("round1");
 			await SIMON_SAYS.sleep(500);
 			e.target.classList.remove("round1");
-			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.srcElement.id;
-			console.log(e.srcElement.id);
+			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.target.id;
 		});
 
-		// button.setAttribute("onclick", "SIMON_SAYS.cliccaaporra();")
 		SIMON_SAYS.container.appendChild(button);
 	}
 
@@ -164,8 +155,9 @@ SIMON_SAYS.check_rounds = function(){
 
 	if(SIMON_SAYS.round_nbr === 3){
 		SIMON_SAYS.round_nbr = 0;
-		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
 		SIMON_SAYS.level_nbr ++;
+		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
+		
 	}
 	else{
 		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
