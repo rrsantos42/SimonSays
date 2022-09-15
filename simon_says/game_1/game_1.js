@@ -19,11 +19,13 @@ SIMON_SAYS.container = undefined;
 SIMON_SAYS.win = document.getElementById("win");
 SIMON_SAYS.lose = document.getElementById("lose");
 SIMON_SAYS.lost = document.getElementById("lost");
-
+SIMON_SAYS.level = document.getElementById("level");
+SIMON_SAYS.round = document.getElementById("round");
+SIMON_SAYS.lifes = document.getElementById("lifes");
 SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
 SIMON_SAYS.lost.style.display = 'none';
-SIMON_SAYS.lifes = 2;
+SIMON_SAYS.lifes_counter = 2;
 
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
@@ -130,10 +132,10 @@ SIMON_SAYS.check = async function(){
 		await SIMON_SAYS.sleep(1500);
 		SIMON_SAYS.round_nbr += 1;
 	}
-	else if (SIMON_SAYS.lifes > 0){
+	else if (SIMON_SAYS.lifes_counter > 0){
 		console.log("YOU LOOSE ONE LIFE");
 		SIMON_SAYS.lose.style.display = 'block';
-		SIMON_SAYS.lifes -= 1;
+		SIMON_SAYS.lifes_counter -= 1;
 		await SIMON_SAYS.sleep(1500);
 		
 	}
@@ -165,7 +167,7 @@ SIMON_SAYS.check_rounds = function(){
 	if(SIMON_SAYS.round_nbr === 3){
 		SIMON_SAYS.round_nbr = 0;
 		SIMON_SAYS.level_nbr ++;
-		SIMON_SAYS.lifes = 3;
+		SIMON_SAYS.lifes_counter = 3;
 		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
 		
 	}
@@ -174,7 +176,11 @@ SIMON_SAYS.check_rounds = function(){
 	}
 }
 SIMON_SAYS.main = async function(){
-	if(SIMON_SAYS.lifes > 0){SIMON_SAYS.start.style.display = "none";}
+	if(SIMON_SAYS.lifes_counter > 0){SIMON_SAYS.start.style.display = "none";}
+	SIMON_SAYS.level.innerHTML = "Level " + SIMON_SAYS.level_nbr;
+	SIMON_SAYS.round.innerHTML = "Round " + SIMON_SAYS.round_nbr;
+	SIMON_SAYS.lifes.innerHTML = "Lifes " + SIMON_SAYS.lifes_counter;
+
 	SIMON_SAYS.check_rounds();
 	SIMON_SAYS.make_grid(SIMON_SAYS.grid_value);
 	SIMON_SAYS.make_order(SIMON_SAYS.level_nbr, SIMON_SAYS.round_nbr);

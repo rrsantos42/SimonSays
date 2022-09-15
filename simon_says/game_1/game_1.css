@@ -160,3 +160,23 @@ button {background-color: #fff;}
 	color:red;
 	margin: auto;
 }
+#level{
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: red;
+	width: 148px;
+	height: 95px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+#round{
+	font-size: 30px;
+}
+#lifes{
+	font-size: 30px;
+}
