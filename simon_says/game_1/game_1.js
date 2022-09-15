@@ -18,12 +18,15 @@ SIMON_SAYS.selectedGame = undefined;
 SIMON_SAYS.container = undefined;
 SIMON_SAYS.win = document.getElementById("win");
 SIMON_SAYS.lose = document.getElementById("lose");
+SIMON_SAYS.lost = document.getElementById("lost");
+
 SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
+SIMON_SAYS.lost.style.display = 'none';
+SIMON_SAYS.lifes = 2;
 
 SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.container = document.querySelector(".button-container");
-
 	SIMON_SAYS.selectedGame = SIMON_SAYS.config.find((i)=> { return i.css === key });
 
     for(var x=0;x<SIMON_SAYS.selectedGame.length;x++) {
@@ -36,14 +39,13 @@ SIMON_SAYS.make_grid = function(key) {
 			e.target.classList.remove("round1");
 			SIMON_SAYS.user_choice[SIMON_SAYS.user_choice.length] = e.target.id;
 		});
-
 		SIMON_SAYS.container.appendChild(button);
 	}
 
 	SIMON_SAYS.container.classList.add(SIMON_SAYS.selectedGame.css);
 	SIMON_SAYS.win.style.display = 'none';
 	SIMON_SAYS.lose.style.display = 'none';
-} 
+}
 
 SIMON_SAYS.clear = function() {
 	SIMON_SAYS.container.innerHTML = "";
@@ -122,17 +124,26 @@ SIMON_SAYS.check = async function(){
 		x++;
 	}
 	if(x == size){
-		console.log("YOU WIN");
+		console.log("NEXT ROUND");
 		SIMON_SAYS.win.style.display = 'block';
 		SIMON_SAYS.turn.style.display = 'none';
 		await SIMON_SAYS.sleep(1500);
 		SIMON_SAYS.round_nbr += 1;
 	}
-	else{
-		console.log("YOU LOOSE");
+	else if (SIMON_SAYS.lifes > 0){
+		console.log("YOU LOOSE ONE LIFE");
 		SIMON_SAYS.lose.style.display = 'block';
+		SIMON_SAYS.lifes -= 1;
 		await SIMON_SAYS.sleep(1500);
 		
+	}
+	else{
+		console.log("YOU LOST THE GAME")
+		SIMON_SAYS.lost.style.display = 'block';
+		SIMON_SAYS.start.style.display = 'block';
+		SIMON_SAYS.showcontainer.style.display = 'none';
+		SIMON_SAYS.turn.style.display = 'none';
+		SIMON_SAYS.wait.style.display = 'none';
 	}
 	SIMON_SAYS.user_choice = [];
 	SIMON_SAYS.cmp_order = [];
@@ -154,6 +165,7 @@ SIMON_SAYS.check_rounds = function(){
 	if(SIMON_SAYS.round_nbr === 3){
 		SIMON_SAYS.round_nbr = 0;
 		SIMON_SAYS.level_nbr ++;
+		SIMON_SAYS.lifes = 3;
 		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
 		
 	}
@@ -161,9 +173,8 @@ SIMON_SAYS.check_rounds = function(){
 		SIMON_SAYS.grid_value = SIMON_SAYS.grids[SIMON_SAYS.level_nbr];
 	}
 }
-
 SIMON_SAYS.main = async function(){
-	SIMON_SAYS.start.style.display = "none";
+	if(SIMON_SAYS.lifes > 0){SIMON_SAYS.start.style.display = "none";}
 	SIMON_SAYS.check_rounds();
 	SIMON_SAYS.make_grid(SIMON_SAYS.grid_value);
 	SIMON_SAYS.make_order(SIMON_SAYS.level_nbr, SIMON_SAYS.round_nbr);

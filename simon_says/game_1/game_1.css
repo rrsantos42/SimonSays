@@ -30,7 +30,12 @@ button {background-color: #fff;}
 	margin: 0 auto;
 	background-color: aquamarine; 
 }
-
+#lost{
+	text-align: center;
+	font-size: 200px;
+	color:red;
+	margin: auto;
+}
 .button-container.twotwo {
 	grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;  
@@ -72,19 +77,6 @@ button {background-color: #fff;}
 	animation-duration: 2s;
   }
 
-  .round2 {
-	animation-name: slowflash;
-	animation-duration: 1s;
-  }
-
-  .round3 {
-	animation-name: slowflash;
-	animation-duration: 0.5s;
-  }
-.btn {
-	
-}
-
 #btn1{
 	left: 694px;
 	top: 332px;
@@ -124,14 +116,6 @@ button {background-color: #fff;}
   
 }
 
-#round{
-	text-align: center;
-	font-size: 40px;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	position: absolute;
-	top: 537px;
-	left: 911px;
-}
 
 
 
@@ -165,4 +149,14 @@ button {background-color: #fff;}
 }
 #win{
 
+	text-align: center;
+	font-size: 200px;
+	color: darkgreen;
+	margin: auto;
+}
+#lose{
+	text-align: center;
+	font-size: 200px;
+	color:red;
+	margin: auto;
 }
