@@ -12,6 +12,10 @@ button {background-color: #fff;}
 	color: rgb(0, 95, 0);
 }
 
+.game{
+
+}
+
 #btn{
 	
 	margin-left: 395px;
@@ -27,8 +31,8 @@ button {background-color: #fff;}
 	display: grid;
 	width: 600px;
 	height: 600px;
-	margin: 0 auto;
-	background-color: aquamarine; 
+	margin: auto;
+	background-color: aquamarine;
 }
 #lost{
 	text-align: center;
@@ -38,31 +42,49 @@ button {background-color: #fff;}
 }
 .button-container.twotwo {
 	grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;  
+    grid-template-rows: 50% 50%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 
 .button-container.threethree {
     grid-template-columns: 33.3333% 33.3333% 33.3333%;
-    grid-template-rows: 33.3333% 33.3333% 33.3333%;  
+    grid-template-rows: 33.3333% 33.3333% 33.3333%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;  
 }
 
 .button-container.fourfour{
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows:  25% 25% 25% 25%;  
+    grid-template-rows:  25% 25% 25% 25%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;  
 }
 
 .button-container.fivefive {
     grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows:  20% 20% 20% 20% 20%;  
+    grid-template-rows:  20% 20% 20% 20% 20%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 
 .button-container.sixsix{
 	grid-template-columns: 16.66666% 16.66666% 16.66666% 16.66666% 16.66666% 16.66666%;
-    grid-template-rows:  16.66666% 16.66666% 16.66666% 16.66666% 16.66666% 16.66666%;  
+    grid-template-rows:  16.66666% 16.66666% 16.66666% 16.66666% 16.66666% 16.66666%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;  
 }
 .button-container.sevenseven{
 	grid-template-columns: 14.28571% 14.28571% 14.28571% 14.28571% 14.28571% 14.28571% 14.28571%;
     grid-template-rows:  14.28571% 14.28571% 14.28571% 14.28571% 14.28571% 14.28571% 14.28571%;   
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 
 @keyframes slowflash {
@@ -175,8 +197,28 @@ button {background-color: #fff;}
 }
 
 #round{
-	font-size: 30px;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: red;
+	width: 148px;
+	height: 95px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 #lifes{
-	font-size: 30px;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: red;
+	width: 148px;
+	height: 95px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }

@@ -179,7 +179,7 @@ SIMON_SAYS.main = async function(){
 	if(SIMON_SAYS.lifes_counter > 0){SIMON_SAYS.start.style.display = "none";}
 	SIMON_SAYS.level.innerHTML = "Level " + SIMON_SAYS.level_nbr;
 	SIMON_SAYS.round.innerHTML = "Round " + SIMON_SAYS.round_nbr;
-	SIMON_SAYS.lifes.innerHTML = "Lifes " + SIMON_SAYS.lifes_counter;
+	SIMON_SAYS.lifes.innerHTML = "Lifes " + (SIMON_SAYS.lifes_counter + 1);
 
 	SIMON_SAYS.check_rounds();
 	SIMON_SAYS.make_grid(SIMON_SAYS.grid_value);
