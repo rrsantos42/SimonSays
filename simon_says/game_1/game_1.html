@@ -12,15 +12,20 @@
 	<body>
 		<h1 id="header">Simon Says</h1>
 		<div class="game">
-			<p id="wait">WAIT FOR THE COMPUTER</p>
-			<p id="turn">Your turn</p>
-			<p id="win"> NEXT ROUND-> </p>
-			<p id="level"></p>
-			<p id="round"></p>
-			<p id="lifes"></p>
-			<p id="lose">YOU LOST ONE LIFE</p>
-			<p id="lost">YOU LOST</p>
-			<button id="btn" onclick="SIMON_SAYS.main()">START</button>
+			<div class="order">
+				<p id="wait">WAIT FOR THE COMPUTER &#9201</p>
+				<p id="turn">Your turn &#128077</p>
+			</div>
+			<p id="win"> NEXT ROUND &#9989 </p>
+			<p id="nxt_lvl">NEXT LEVEL &#128079</p>
+			<div id="count">
+				<p id="level"></p>
+				<p id="round"></p>
+				<p id="lifes"></p>
+			</div>
+			<p id="lose">YOU LOST ONE LIFE  &#128514</p>
+			<p id="lost">YOU LOST &#128405</p>
+			<button id="start" onclick="SIMON_SAYS.main()">START</button>
 			<div class="button-container" id="container">
 			</div>
 			<button id="next_lvl" onclick="SIMON_SAYS.check()">CHECK</button>

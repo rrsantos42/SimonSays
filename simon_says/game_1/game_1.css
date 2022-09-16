@@ -12,11 +12,25 @@ button {background-color: #fff;}
 	color: rgb(0, 95, 0);
 }
 
+/*
 .game{
+	display: flex;
 
 }
+*/
+#count{
 
-#btn{
+	display: flex;
+	gap: 10px;
+	align-self: center;
+}
+.order{
+	
+	text-align: center;
+	font-size: 50px;
+}
+
+#start{
 	
 	margin-left: 395px;
 	width: 152px;
@@ -25,6 +39,10 @@ button {background-color: #fff;}
 	left: 622px;
 	background: rgb(84, 255, 45);
 	border-radius: 50%;
+}
+
+#start:hover{
+	background-color: rgb(0, 212, 0);
 }
 
 .button-container {
@@ -99,56 +117,19 @@ button {background-color: #fff;}
 	animation-duration: 2s;
   }
 
-#btn1{
-	left: 694px;
-	top: 332px;
-}
-
-#btn2{
-	top: 332px;
-	left: 949px;
-  }
-
-
-#btn3{
-	top: 558px;
-	left: 694px;
-}
-
-
-#btn4{
-	top: 558px;
-	left: 949px;
-}
-
-#bd{
-	text-align: center;
-	border-radius: 50%;
-	position: absolute;
-	background-color: brown;
-	border-top-style: solid;
-	border-right-style: solid;
-	width: 130px;
-	height: 130px;
-	border-top-width: 0px;
-	left: 884px;
-	top: 494px;
-	border-right-width: 0px;
-	margin-top: 1px
-  
-}
-
-
-
-
 #next_lvl{
 	margin-left: 1214px;
 	margin-bottom: 20px;
 	left: 1040px;
 	height: 58px;
 	width: 172px;
-	background-color: rgb(225, 3, 3);
+	background-color: rgb(192, 1, 1)
 }
+
+#next_lvl:hover{
+	background-color: rgb(255, 20, 20);
+}
+
 
 .foot{
 	margin: auto;
@@ -169,19 +150,29 @@ button {background-color: #fff;}
 	margin: auto;
 	font-size: 30px;
 }
+
 #win{
 
 	text-align: center;
-	font-size: 200px;
+	font-size: 80px;
 	color: darkgreen;
 	margin: auto;
 }
+
 #lose{
 	text-align: center;
-	font-size: 200px;
+	font-size: 60px;;
 	color:red;
 	margin: auto;
 }
+
+#nxt_lvl{
+	text-align: center;
+	font-size: 70px;;
+	color:rgb(21, 0, 255);
+	margin: auto;
+}
+
 #level{
 	font-size: 20px;
 	display: flex;
