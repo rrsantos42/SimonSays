@@ -7,17 +7,23 @@ SIMON_SAYS.config = [
 	{ css: "fourfour", name: "4x4", length: 16 },
 	{ css: "fivefive", name: "5x5", length: 25},
 	{ css: "sixsix", name: "6x6", length: 36},
-	{ css: "sevenseven", name: "7x7", length:49}
+	{ css: "sevenseven", name: "7x7", length:49},
+	{ css: "eighteight", name: "8x8", length:64}
 ];
+
 //global var
 SIMON_SAYS.round_nbr = 0;
 SIMON_SAYS.level_nbr = 0;
 SIMON_SAYS.lifes_counter = 2;
+SIMON_SAYS.score = 0;
+
 SIMON_SAYS.cmp_order = [];
 SIMON_SAYS.user_choice = [];
-SIMON_SAYS.keys = [ "twotwo", "threethree", "fourfour", "fivefive", "sixsix", "sevenseven"];
+SIMON_SAYS.keys = ["twotwo", "threethree", "fourfour", "fivefive", "sixsix", "sevenseven", "eighteight"];
+
 SIMON_SAYS.selectedGame = undefined;
 SIMON_SAYS.container = undefined;
+
 SIMON_SAYS.win = document.getElementById("win");
 SIMON_SAYS.lose = document.getElementById("lose");
 SIMON_SAYS.lost = document.getElementById("lost");
@@ -29,6 +35,8 @@ SIMON_SAYS.turn  = document.getElementById("turn");
 SIMON_SAYS.start = document.getElementById("start");
 SIMON_SAYS.checkbtn = document.getElementById("next_lvl");
 SIMON_SAYS.nxt_lvl = document.getElementById("nxt_lvl");
+SIMON_SAYS.score_cont = document.getElementById('score');
+
 SIMON_SAYS.win.style.display = 'none';
 SIMON_SAYS.lose.style.display = 'none';
 SIMON_SAYS.lost.style.display = 'none';
@@ -60,6 +68,7 @@ SIMON_SAYS.make_grid = function(key) {
 	SIMON_SAYS.win.style.display = 'none';
 	SIMON_SAYS.lose.style.display = 'none';
 }
+
 // func cleans the container 
 SIMON_SAYS.clear = function() {
 	SIMON_SAYS.container.innerHTML = "";
@@ -69,42 +78,25 @@ SIMON_SAYS.clear = function() {
 SIMON_SAYS.sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
+SIMON_SAYS.getRandomInt = function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  }
+  
 // func that makes a random order so the btn can be clicked 
 SIMON_SAYS.make_order = function(lvl, round_nbr){
 	SIMON_SAYS.cmp_order = [];
-	var i = 0;
-	if(lvl == 0){
-		for(times = 0; times < (2 * (round_nbr + 1)); times++){
-				i = Math.floor(Math.random() * 4);
-				SIMON_SAYS.cmp_order[times] = i;
-			}
-	 }
-	if(lvl == 1){
-		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
-			i = Math.floor(Math.random() * 9);
-			SIMON_SAYS.cmp_order[times] = i;
-		}
+	let x = 0;
+	let sqr = lvl + 2;
+	let i = 0;
+	let counter = 2;
+	for(i = 0; i < (counter + round_nbr) + lvl; i++){
+		x =  SIMON_SAYS.getRandomInt(0, Math.pow(sqr, 2));
+		SIMON_SAYS.cmp_order[i] =  x;
 	}
-	if(lvl == 2){
-		for(times = 0; times < (2 * (round_nbr + lvl)); times++){
-			i = Math.floor(Math.random() * 16);
-			SIMON_SAYS.cmp_order[times] = i;
-		}
-	}
-	if(lvl == 3){
-		for(times = 0; times < (2 * (round_nbr + 1) + lvl); times++){
-			i = Math.floor(Math.random() * 25);
-			SIMON_SAYS.cmp_order[times] = i;
-		}
-	}
-	if(lvl == 4){
-		for(times = 0; times < (2 * (round_nbr + lvl - 1)); times++){
-			i = Math.floor(Math.random() * 36);
-			SIMON_SAYS.cmp_order[times] = i;
-		}
-	}
-	return(SIMON_SAYS.cmp_order);
+	counter++;
+	return(SIMON_SAYS.cmp_order);	
 }
 
 // func that auto clicks the btn in the cmp_order
@@ -146,12 +138,14 @@ SIMON_SAYS.check = async function(){
 		SIMON_SAYS.turn.style.display = 'none';
 		await SIMON_SAYS.sleep(1500);
 		SIMON_SAYS.round_nbr += 1;
+		SIMON_SAYS.score += 200;
 	}
 	else if (SIMON_SAYS.lifes_counter > 0){
 		console.log("YOU LOOSE ONE LIFE");
 		SIMON_SAYS.lose.style.display = 'block';
 		SIMON_SAYS.lifes_counter -= 1;
 		await SIMON_SAYS.sleep(1500);
+		SIMON_SAYS.score -= 200;
 		
 	}
 	else{
@@ -176,7 +170,7 @@ SIMON_SAYS.check_rounds = function(){
 		SIMON_SAYS.level_nbr ++;
 		SIMON_SAYS.lifes_counter = 2;
 		SIMON_SAYS.grid_key = SIMON_SAYS.keys[SIMON_SAYS.level_nbr];
-		
+		SIMON_SAYS.score += 600; 
 	}
 	else{
 		SIMON_SAYS.grid_key = SIMON_SAYS.keys[SIMON_SAYS.level_nbr];
@@ -195,5 +189,5 @@ SIMON_SAYS.main = async function(){
 	SIMON_SAYS.level.innerHTML = "Level " + (SIMON_SAYS.level_nbr + 1);
 	SIMON_SAYS.round.innerHTML = "Round " + (SIMON_SAYS.round_nbr + 1);
 	SIMON_SAYS.lifes.innerHTML = "Lifes " + (SIMON_SAYS.lifes_counter + 1);
-
+	SIMON_SAYS.score_cont.innerHTML = "Score " + (SIMON_SAYS.score);
 }
