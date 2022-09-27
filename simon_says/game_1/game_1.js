@@ -91,11 +91,10 @@ SIMON_SAYS.make_order = function(lvl, round_nbr){
 	let sqr = lvl + 2;
 	let i = 0;
 	let counter = 2;
-	for(i = 0; i < (counter + round_nbr) + lvl; i++){
+	for(i = 0; i < (counter + round_nbr) + (lvl * counter); i++){
 		x =  SIMON_SAYS.getRandomInt(0, Math.pow(sqr, 2));
 		SIMON_SAYS.cmp_order[i] =  x;
 	}
-	counter++;
 	return(SIMON_SAYS.cmp_order);	
 }
 
