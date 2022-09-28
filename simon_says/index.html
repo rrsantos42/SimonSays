@@ -10,15 +10,23 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<h1 class="header">Simon Says</h1>
-		<div class="intra">Intra User</div>
-		<input type="text" id="input">
-		<button id="btn" onclick="getname()">Submit</button>
-		<a href="game_1/game_1.html" id="link">
-				<button id="start">START</button>
-		</a>
-		<div class="foot">42Lisboa</div>
-		<div class="foot2">Made By: rsantos</div>
+		<div class="login-page">
+			<div class="form">
+			  <form class="register-form">
+				<input type="text" placeholder="name"/>
+				<input type="password" placeholder="password"/>
+				<input type="text" placeholder="email address"/>
+				<button>create</button>
+				<p class="message">Already registered? <a href="#">Sign In</a></p>
+			  </form>
+			  <form class="login-form">
+				<input type="text" placeholder="username"/>
+				<input type="password" placeholder="password"/>
+				<button>login</button>
+				<p class="message">Not registered? <a href="#">Create an account</a></p>
+			  </form>
+			</div>
+		  </div>
 		<script src="main.js"></script>
 	</body>
 </html>
