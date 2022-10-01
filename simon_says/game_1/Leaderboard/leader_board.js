@@ -1,6 +1,8 @@
 const colors = {
-	mercedes: '#00D2BE',
-	ferrari: '#DC0000',
+	other1: '##0000ff', //blue
+	other2: '#DC0000',//red
+  other3: '#0b0be8', //blue
+  other4: '008000' //green
 
   }
 
