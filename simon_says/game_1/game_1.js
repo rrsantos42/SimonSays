@@ -148,12 +148,7 @@ SIMON_SAYS.check = async function(){
 		
 	}
 	else{
-		console.log("YOU LOST THE GAME")
-		SIMON_SAYS.lost.style.display = 'block';
-		SIMON_SAYS.start.style.display = 'block';
-		SIMON_SAYS.showcontainer.style.display = 'none';
-		SIMON_SAYS.turn.style.display = 'none';
-		SIMON_SAYS.wait.style.display = 'none';
+		window.location.href("Leaderboard/leader_board.html");
 	}
 	SIMON_SAYS.user_choice = [];
 	SIMON_SAYS.cmp_order = [];
