@@ -148,7 +148,7 @@ SIMON_SAYS.check = async function(){
 		
 	}
 	else{
-		window.location.href("Leaderboard/leader_board.html");
+		window.location.href= "Leaderboard/leader_board.html";
 	}
 	SIMON_SAYS.user_choice = [];
 	SIMON_SAYS.cmp_order = [];
