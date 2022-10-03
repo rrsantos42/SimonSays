@@ -1,7 +1,5 @@
 body{
-	background-color: #fde322;
-	background-color: #0000ff;
-	background-color: #008000;
+	background-color: #f8ea7a;
 
 }
 
@@ -9,7 +7,6 @@ button {background-color: #fff;}
 
 #header{
 	text-align: center;
-	font-family:fantasy;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	font-size: 100px;
@@ -49,7 +46,7 @@ button {background-color: #fff;}
 	width: 600px;
 	height: 600px;
 	margin: auto;
-	background-color: #fde322;
+	background-color: #f8ea7a;
 }
 #lost{
 	text-align: center;
